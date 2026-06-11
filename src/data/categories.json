@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cua-sat",
+    "name": "Cửa Sắt & Cửa Cổng",
+    "description": "",
+    "thumbnail": "",
+    "priority": 1,
+    "isActive": true
+  },
+  {
+    "id": "mai-ton",
+    "name": "Mái Tôn & Nhà Tiền Chế",
+    "description": "",
+    "thumbnail": "",
+    "priority": 2,
+    "isActive": true 
+  }
+]
