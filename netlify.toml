@@ -1,0 +1,16 @@
+# Định nghĩa chính xác MIME Type cho các file script để trình duyệt không chặn
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/*.jsx"
+  [headers.values]
+    Content-Type = "application/javascript"
+
+# Cấu hình chuyển hướng cho React Router (Tránh lỗi 404 khi F5)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
