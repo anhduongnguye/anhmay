@@ -14,5 +14,13 @@
     "thumbnail": "",
     "priority": 2,
     "isActive": true 
+  },
+  {
+    "id": "cua-cuon",
+    "name": "Cửa cuốn",
+    "description": "",
+    "thumbnail": "",
+    "priority": 3,
+    "isActive": true 
   }
 ]
