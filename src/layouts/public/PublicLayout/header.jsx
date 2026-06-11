@@ -66,7 +66,7 @@ function Header() {
         <div className="w-[280px] h-full bg-[#151515] flex items-center justify-center px-6 border-r border-[#ffffff0d] shrink-0">
           <Link to="/">
             <img
-              src={company.logo || "https://reactheme.com/products/html/elevate/assets/images/logo/02.png"}
+              src={"https://reactheme.com/products/html/elevate/assets/images/logo/02.png"}
               alt="Elevate Logo"
               className="h-[50px] w-auto object-contain"
             />
