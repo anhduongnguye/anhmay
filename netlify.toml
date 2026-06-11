@@ -1,3 +1,8 @@
+# Cấu hình Build cho Netlify
+[build]
+  command = "npm run build"
+  publish = "dist"
+
 # Định nghĩa chính xác MIME Type cho các file script để trình duyệt không chặn
 [[headers]]
   for = "/*.js"
