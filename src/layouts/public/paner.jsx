@@ -22,7 +22,7 @@ function Paner({ company }) {
   const slides = [
     {
       preTitle: "CƠ KHÍ NGUYỄN MAY - 12 NĂM ĐỈNH CAO CHẤT LƯỢNG",
-      title: "Tuyệt Tác Cơ Khí\nĐột Phá Trong\nTừng Thiết Kế",
+      title: "Cơ khí nguyễn may\nThành phố huế\nHồ chí minh",
       description: "Khẳng định đẳng cấp qua hàng ngàn công trình. Chúng tôi biến bản vẽ phức tạp nhất thành những sản phẩm cơ khí chính xác đến từng milimet, bền bỉ cùng thời gian.",
       bgImage: "https://plus.unsplash.com/premium_photo-1682147474777-90dc55cdbc67?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8V2VsZGluZyUyMHNwYXJrc3xlbnwwfHwwfHx8MA%3D%3D", // Bạn thay ảnh xưởng cơ khí của bạn vào đây nhé
       projectLink: "#",
