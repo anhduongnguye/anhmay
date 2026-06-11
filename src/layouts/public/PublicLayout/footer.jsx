@@ -271,7 +271,7 @@ const Footer = () => {
                       <FaRegClock className="text-[#ff5a00]" /> 14 tháng 02
                     </span>
                     <h6 className="text-white font-bold text-[14px] leading-tight hover:text-[#ff5a00] cursor-pointer transition-colors duration-300 block">
-                      Làm thế nào để tính vật liệu cần thiết
+                      Cần bao nhiêu vật liệu để thi công công trình?
                     </h6>
                     <a href="#" className="text-[#ff5a00] hover:text-white transition-colors duration-300 text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 mt-1">
                       XEM THÊM <FaArrowRight className="text-[10px]" />
