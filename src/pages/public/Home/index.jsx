@@ -14,8 +14,8 @@ function Home() {
       <div className="w-full xl:max-w-4xl mx-auto">
         <Contact company={company} />
         <Category />
+        <Post />
       </div>
-      <Post />
     </>
   );
 }
