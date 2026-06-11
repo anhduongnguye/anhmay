@@ -6,9 +6,7 @@ function PublicLayout() {
     <>
       <div>
         <Header />
-        <div className="w-full xl:max-w-4xl mx-auto">
-          <Outlet />
-        </div>
+        <Outlet />
         <Footer />
       </div>
     </>

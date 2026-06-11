@@ -9,11 +9,13 @@ import Paner from "../../../layouts/public/paner";
 function Home() {
   const company = useSelector((state) => state.company.company)
   return (
-    <> 
-      <Paner company={company}/>
-      <Contact company={company} />
-      <Category/>
-      <Post/>
+    <>
+      <Paner company={company} />
+      <div className="w-full xl:max-w-4xl mx-auto">
+        <Contact company={company} />
+        <Category />
+      </div>
+      <Post />
     </>
   );
 }
