@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import { getPosts } from "../../../../api/public/post.api";
 
 function PostRelated() {
-
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    pageSize: 20
+    pageSize: 4 // Chia 4 cột chuẩn responsive cho PC
   });
+  
   var totalPages = 1;
-  useEffect(() => {
 
+  useEffect(() => {
     const fetchApi = async () => {
       try {
         const response = await getPosts(pagination);
@@ -22,8 +22,8 @@ function PostRelated() {
           totalPages = response.data.totalPages;
         }
       } catch (error) {
-        console.error("Lỗi khi lấy danh sách category:", error);
-        setError(true)
+        console.error("Lỗi khi lấy danh sách bài viết liên quan:", error);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -31,8 +31,17 @@ function PostRelated() {
     fetchApi();
   }, [pagination]);
 
-  if (isLoading) return (<div>Đang tải dữ liệu</div>)
-  if (isError) return (<div>Hệ thôgns đang lỗi</div>)
+  if (isLoading) return (
+    <div className="flex items-center justify-center py-16 text-zinc-500 text-[12px] font-extrabold uppercase tracking-[0.2em]">
+      ĐANG TẢI CÔNG TRÌNH LIÊN QUAN...
+    </div>
+  );
+  
+  if (isError) return (
+    <div className="flex items-center justify-center py-16 text-red-500 text-[12px] font-extrabold uppercase tracking-[0.2em]">
+      HỆ THỐNG LỖI TẢI DỮ LIỆU
+    </div>
+  );
 
   const handleClick_morePost = () => {
     setPagination(prev => ({
@@ -40,35 +49,131 @@ function PostRelated() {
       currentPage: prev.currentPage + 1
     }));
   };
+
   return (
-    <>
-      <h1>Công trình liên quan</h1>
-      <div className="grid grid-cols-4 gap-4">
-        {
-          posts.length > 0 && posts?.map((post, index) => {
-            const name = post.name.slice(0, 30) + "...";
-            return (
-            <Link to={`/bai-viet/${post.id}`}>
-              <div key={index} className="border border-gray-400 rounded-3xl my-2 py-2">
-                <div className="font-bold m-2">{name}</div>
-                <div className="w-full aspect-video">
-                  <img src={post.images[0]} alt="anh" className="w-full h-full object-cover object-center" />
-                </div>
-                <div className="text-red-400 m-2">{post.price}</div>
-              </div>
-            </Link>
-          )
-          }
-        )
-        }
-      </div>
-      {totalPages != 1 && (
-        <div onClick={handleClick_morePost} className="mt-4 cursor-pointer text-center">
-          <button className="border border-gray-400 px-4 py-2 rounded-3xl">Xem thêm</button>
+    <div className="w-full bg-[#0d0d0d] py-16 text-zinc-300 font-sans border-t border-[#ffffff0d]">
+      <div className="container mx-auto px-6 max-w-[1320px]">
+        
+        {/* TIÊU ĐỀ KHỐI - CHUẨN CƠ KHÍ NGUYỄN MAY */}
+        <div className="relative mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#ffffff0d] pb-6">
+          <div>
+            <span className="text-[#ff5a00] text-[11px] font-extrabold uppercase tracking-[0.3em] mb-2 block">
+              HỆ SINH THÁI CHẾ TẠO
+            </span>
+            <h2 className="text-white text-2xl md:text-3xl font-black uppercase tracking-tight">
+              Công trình liên quan
+            </h2>
+          </div>
+          
+          {/* Họa tiết 3 đường kẻ độc quyền lấy từ Footer của bạn */}
+          <div className="flex items-center gap-[5px] mb-1">
+            <div className="h-[2px] w-[35px] bg-[#ff5a00]"></div>
+            <div className="h-[2px] w-[8px] bg-[#ff5a00]"></div>
+            <div className="h-[2px] w-[8px] bg-[#ff5a00]"></div>
+          </div>
         </div>
-      )}
-    </>
-  )
+
+        {/* LƯỚI CARD - RESPONSIVE 1 CỘT (MOBILE) -> 2 CỘT (TABLET) -> 4 CỘT (PC) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {posts.length > 0 && posts.map((post, index) => {
+            // Cắt chữ 35 ký tự tinh tế cho vừa vặn layout lưới hẹp
+            const name = post.name.length > 35 ? post.name.slice(0, 35) + "..." : post.name;
+            
+            return (
+              <div 
+                key={index} 
+                className="group/card flex flex-col bg-[#111111] border border-[#ffffff05] hover:border-[#ff5a00]/30 transition-all duration-500 overflow-hidden relative"
+              >
+                {/* KHUNG ẢNH - Hiệu ứng Ken Burns Zoom như Paner của bạn */}
+                <div className="w-full aspect-video relative overflow-hidden bg-[#161616]">
+                  <img 
+                    src={post.images && post.images[0] ? post.images[0] : "https://via.placeholder.com/400x225"} 
+                    alt={post.name} 
+                    className="w-full h-full object-cover object-center scale-100 group-hover/card:scale-105 transition-transform duration-[4000ms] ease-out" 
+                  />
+                  {/* Lớp phủ mờ tối nhẹ tăng độ sang trọng */}
+                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/0 transition-colors duration-500" />
+                  
+                  {/* TAG GIÁ - Chữ trắng, khối cam đè góc ảnh cực lực */}
+                  {post.price && (
+                    <div className="absolute bottom-0 left-0 text-white text-[11px] font-black tracking-widest bg-[#ff5a00] px-3 py-1 uppercase">
+                      {post.price}
+                    </div>
+                  )}
+                </div>
+
+                {/* PHẦN THÔNG TIN CHỮ */}
+                <div className="p-5 flex flex-col flex-grow">
+                  {/* Tên công trình - Đổi sang màu cam khi hover toàn vùng card */}
+                  <h3 className="text-white font-extrabold text-[15px] uppercase tracking-wide leading-snug mb-6 line-clamp-2 min-h-[44px] group-hover/card:text-[#ff5a00] transition-colors duration-300">
+                    {name}
+                  </h3>
+
+                  {/* NÚT XEM CHI TIẾT - Hiệu ứng trượt màu cam-đen đồng bộ Paner */}
+                  <div className="mt-auto">
+                    <Link
+                      to={`/bai-viet/${post.id}`}
+                      className="group/btn relative z-10 overflow-hidden flex items-center justify-between pl-5 pr-1 py-1 w-full h-[44px] bg-transparent text-white border border-white/10 group-hover/card:border-[#ff5a00] text-[11px] font-extrabold uppercase tracking-widest transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff5a00] after:-z-10 after:translate-y-[102%] hover:after:translate-y-0 after:transition-transform after:duration-300"
+                    >
+                      <span>XEM CHI TIẾT</span>
+                      
+                      {/* Ô mũi tên vuông vức góc cạnh đúng chất cơ khí */}
+                      <span className="flex items-center justify-center shrink-0 w-[34px] h-[34px] bg-[#ff5a00] group-hover/btn:bg-white text-white group-hover/btn:text-[#ff5a00] transition-colors duration-300">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* NÚT XEM THÊM - Đặt ở giữa, lực và bề thế */}
+        {totalPages !== 1 && (
+          <div className="mt-14 flex justify-center">
+            <button
+              onClick={handleClick_morePost}
+              className="group/more relative z-10 overflow-hidden flex items-center justify-between pl-6 pr-1 w-full sm:w-[260px] h-[50px] bg-[#ff5a00] text-white font-extrabold text-[11px] uppercase tracking-widest transition-colors duration-300 hover:bg-white hover:text-black"
+            >
+              <span>XEM THÊM CÔNG TRÌNH</span>
+              
+              <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] bg-white/10 group-hover/more:bg-black group-hover/more:text-white text-white transition-colors duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </button>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
 }
 
 export default PostRelated;

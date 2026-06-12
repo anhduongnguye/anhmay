@@ -20,54 +20,57 @@ export default function FacebookImageGrid({ post }) {
   if (totalImages === 0) return null;
 
   return (
-    <div className="w-full max-w-xl my-4">
-      {/* Định hình khung lưới dựa trên số lượng ảnh:
-        - 1 ảnh: Hiện full rộng
-        - 2 ảnh: Chia đôi 2 cột (grid-cols-2)
-        - 3 hoặc nhiều hơn: Chia làm 2 cột ghép cặp
-      */}
-      <div className={`grid gap-1.5 overflow-hidden rounded-xl ${
-        totalImages === 1 ? 'grid-cols-1' : 'grid-cols-2'
-      }`}>
-        
-        {images.slice(0, 4).map((image, imgIndex) => {
-          // Kiểm tra xem đây có phải là bức ảnh cuối cùng hiển thị (ảnh thứ 4) không
-          const isLastVisible = imgIndex === 3;
-          // Kiểm tra xem có còn ảnh thừa phía sau không
-          const hasMore = totalImages > 4;
+    <div className="w-full">
+      {/* Khung cố định chiều cao 260px — mọi thẻ post đều cùng kích thước ảnh */}
+      <div
+        className="relative overflow-hidden bg-gray-100"
+        style={{ height: "260px" }}
+      >
+        <div
+          className={`absolute inset-0 grid gap-[2px] ${totalImages === 1 ? "grid-cols-1" : "grid-cols-2"
+            } ${totalImages === 3
+              ? "grid-rows-2"
+              : totalImages >= 4
+                ? "grid-rows-2"
+                : "grid-rows-1"
+            }`}
+        >
+          {images.slice(0, 4).map((image, imgIndex) => {
+            const isLastVisible = imgIndex === 3;
+            const hasMore = totalImages > 4;
 
-          return (
-            <div 
-              key={imgIndex} 
-              className={`relative cursor-pointer overflow-hidden bg-gray-100 aspect-square ${
-                // Nếu chỉ có 3 ảnh, cho ảnh đầu tiên chiếm trọn dòng đầu
-                totalImages === 3 && imgIndex === 0 ? 'col-span-2 aspect-[2/1]' : ''
-              }`}
-              onClick={() => handleOpenLightbox(imgIndex)}
-            >
-              <img 
-                src={image} 
-                alt={`post-img-${imgIndex}`} 
-                className="w-full h-full object-cover hover:scale-102 transition-transform duration-200" 
-              />
+            // Ảnh đầu khi chỉ có 3 ảnh → chiếm cả cột trái (2 hàng)
+            const spanClass =
+              totalImages === 3 && imgIndex === 0 ? "row-span-2" : "";
 
-              {/* Lớp phủ dấu cộng cho bức ảnh cuối cùng */}
-              {isLastVisible && hasMore && (
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white font-bold text-2xl">
-                  +{totalImages - 3}
-                </div>
-              )}
-            </div>
-          );
-        })}
+            return (
+              <div
+                key={imgIndex}
+                className={`relative cursor-pointer overflow-hidden bg-gray-200 ${spanClass}`}
+                onClick={() => handleOpenLightbox(imgIndex)}
+              >
+                <img
+                  src={image}
+                  alt={`post-img-${imgIndex}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+                {isLastVisible && hasMore && (
+                  <div className="absolute inset-0 bg-black/55 flex items-center justify-center text-white font-bold text-2xl">
+                    +{totalImages - 3}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Bộ thư viện Lightbox để bấm vào là xem, vuốt qua vuốt lại như Facebook */}
+      {/* Lightbox */}
       <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={images.map(img => ({ src: img }))}
+        slides={images.map((img) => ({ src: img }))}
       />
     </div>
   );

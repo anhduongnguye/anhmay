@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from "react-redux";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { 
   FaFacebookF, 
@@ -18,7 +19,23 @@ import {
 const Footer = () => {
   const footerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const company = useSelector((state) => state.company.company)
+  const company = useSelector((state) => state.company.company);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleFooterScroll = (e, sectionId) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 400);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,7 +63,7 @@ const Footer = () => {
   return (
     <footer 
       ref={footerRef}
-      className="rts-footer-area footer-one bg-image relative overflow-hidden" 
+      className="rts-footer-area footer-one bg-image relative overflow-hidden border-t border-t-2 border-[#ff5a00]" 
       style={{
         color: '#9e9e9e',
         fontFamily: '"Archivo", sans-serif'
@@ -170,13 +187,19 @@ const Footer = () => {
               <div className="h-[2px] w-[8px] bg-[#ff5a00]"></div>
             </div>
             <ul className="space-y-[15px]">
-              {['Thông tin doanh nghiệp', 'Sản phẩm', 'Dịch vụ', 'Bài viết' ].map(link => (
-                <li key={link}>
-                  <a 
-                    href="#" 
-                    className="group text-gray-400 hover:text-[#ff5a00] transition-colors duration-300 flex items-center gap-3 text-[15px] font-medium"
+              {[
+                { label: 'Thông tin doanh nghiệp', sectionId: 'lien-he' },
+                { label: 'Sản phẩm', sectionId: 'post-section' },
+                { label: 'Dịch vụ', sectionId: 'category-section' },
+                { label: 'Liên hệ', sectionId: 'lien-he' },
+              ].map(item => (
+                <li key={item.label}>
+                  <a
+                    href={`/#${item.sectionId}`}
+                    onClick={(e) => handleFooterScroll(e, item.sectionId)}
+                    className="group text-gray-400 hover:text-[#ff5a00] transition-colors duration-300 flex items-center gap-3 text-[15px] font-medium cursor-pointer"
                   >
-                    <FaArrowRight className="text-[12px] text-gray-500 group-hover:text-[#ff5a00] group-hover:translate-x-1 transition-all duration-300 shrink-0" /> {link}
+                    <FaArrowRight className="text-[12px] text-gray-500 group-hover:text-[#ff5a00] group-hover:translate-x-1 transition-all duration-300 shrink-0" /> {item.label}
                   </a>
                 </li>
               ))}
@@ -288,7 +311,7 @@ const Footer = () => {
       <div className="copyright-area py-[24px] border-t border-[#ffffff0d] bg-black/40 relative z-10">
         <div className="container mx-auto px-[20px] max-w-[1320px] flex justify-between items-center flex-wrap gap-4">
           <p className="text-[14px] text-gray-500 w-full text-center">
-            Copyright 2022 by Nguyen Van Giau. All Rights Reserved.
+            Copyright 2026 by Nguyen Van Giau. All Rights Reserved.
           </p>
         </div>
 

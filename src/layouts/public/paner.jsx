@@ -19,30 +19,39 @@ function Paner({ company }) {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+    const cleanId = targetId.replace("#", "");
+    const element = document.getElementById(cleanId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const slides = [
     {
       preTitle: "CƠ KHÍ NGUYỄN MAY - 12 NĂM ĐỈNH CAO CHẤT LƯỢNG",
       title: "Cơ khí nguyễn may\nThành phố huế\nHồ chí minh",
       description: "Khẳng định đẳng cấp qua hàng ngàn công trình. Chúng tôi biến bản vẽ phức tạp nhất thành những sản phẩm cơ khí chính xác đến từng milimet, bền bỉ cùng thời gian.",
       bgImage: "https://plus.unsplash.com/premium_photo-1682147474777-90dc55cdbc67?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8V2VsZGluZyUyMHNwYXJrc3xlbnwwfHwwfHx8MA%3D%3D", // Bạn thay ảnh xưởng cơ khí của bạn vào đây nhé
-      projectLink: "#",
-      serviceLink: "#",
+      projectLink: "#post-section",
+      serviceLink: "#category-section",
     },
     {
       preTitle: "THƯƠNG HIỆU CƠ KHÍ UY TÍN HÀNG ĐẦU",
       title: "Giải Pháp Cơ Khí\nBứt Phá Mọi\nGiới Hạn",
       description: "Sở hữu trang thiết bị tân tiến cùng đội ngũ kỹ sư lão luyện. Nguyễn May tự hào là điểm tựa vững chắc, cung ứng giải pháp gia công và lắp đặt cơ khí toàn diện cho mọi doanh nghiệp.",
       bgImage: "https://images.unsplash.com/photo-1609348632802-b952f368fc3a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8V2VsZGluZyUyMHNwYXJrc3xlbnwwfHwwfHx8MA%3D%3D",
-      projectLink: "#",
-      serviceLink: "#",
+      projectLink: "#post-section",
+      serviceLink: "#category-section",
     },
     {
       preTitle: "DẪN ĐẦU CÔNG NGHỆ CHẾ TẠO",
       title: "Chất Lượng Vàng\nKiến Tạo Những\nThành Công",
       description: "12 năm chinh chiến, chúng tôi không chỉ làm ra sản phẩm, chúng tôi tạo nên những giá trị trường tồn. Cam kết tiến độ thần tốc, bảo hành tối ưu, làm hài lòng cả những khách hàng khó tính nhất.",
       bgImage: "https://plus.unsplash.com/premium_photo-1661963236181-9eb0c8d766e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fFdlbGRpbmclMjBzcGFya3N8ZW58MHx8MHx8fDA%3D",
-      projectLink: "#",
-      serviceLink: "#",
+      projectLink: "#post-section",
+      serviceLink: "#category-section",
     }
   ]
 
@@ -131,12 +140,14 @@ function Paner({ company }) {
                     }`}>
                     <a
                       href={slide.projectLink}
+                      onClick={(e) => handleScroll(e, slide.projectLink)}
                       className="inline-flex items-center gap-2 bg-[#ff5a00] hover:bg-white text-white hover:text-black py-4 px-8 font-extrabold text-[11px] uppercase tracking-widest transition-colors duration-300"
                     >
                       XEM SẢN PHẨM
                     </a>
                     <a
                       href={slide.serviceLink}
+                      onClick={(e) => handleScroll(e, slide.serviceLink)}
                       className="inline-flex items-center border border-white/20 hover:border-[#ff5a00] hover:bg-[#ff5a00] text-white py-4 px-8 font-extrabold text-[11px] uppercase tracking-widest transition-all duration-300"
                     >
                       DỊCH VỤ

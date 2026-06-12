@@ -11,10 +11,10 @@ function Home() {
   return (
     <>
       <Paner company={company} />
-      <div className="w-full xl:max-w-4xl mx-auto">
-        <Contact company={company} />
+      <div className="w-full">
         <Category />
         <Post />
+        <Contact company={company} />
       </div>
     </>
   );

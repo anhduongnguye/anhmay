@@ -1,42 +1,151 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../../../api/public/post.api";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { TfiComment } from "react-icons/tfi";
-import { PiShareFatThin } from "react-icons/pi";
 import FacebookImageGrid from '../../FacebookImageGrid';
 import { useSelector } from "react-redux";
+import { FaRegClock } from "react-icons/fa";
+
+function formatDate(dateString) {
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  if (isNaN(date)) return null;
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  return `${day} tháng ${month.toString().padStart(2, "0")}`;
+}
+
+// Component con xử lý hiệu ứng an toàn cho từng Card Dự án
+function PostCard({ post, index, dateStr }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Khi đã hiện thì giữ nguyên, không ẩn lại nữa để tránh mất chữ
+        }
+      },
+      { threshold: 0.02 } // Kích hoạt rất sớm khi vừa chạm nhẹ màn hình
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
+  const delays = ["delay-[0ms]", "delay-[150ms]", "delay-[300ms]"];
+  const currentDelay = delays[index % 3];
+
+  return (
+    <div
+      ref={cardRef}
+      className={`group/card flex flex-col bg-transparent overflow-hidden h-full transition-all duration-[800ms] ease-out transform ${isVisible
+          ? `translate-y-0 opacity-100 ${currentDelay}`
+          : "translate-y-4 opacity-30" // Trạng thái chờ: Chỉ mờ nhẹ và hơi nhích xuống một chút, không bao giờ lo mất chữ
+        }`}
+    >
+      {/* Khung ảnh Facebook Grid */}
+      <div className="w-full relative rounded-[4px] overflow-hidden transition-all duration-500 ease-out group-hover/card:shadow-[0_15px_35px_rgba(0,0,0,0.1)]">
+        <FacebookImageGrid post={post} />
+      </div>
+
+      {/* Content Section */}
+      <div className="flex flex-col flex-grow pt-5 pb-2 bg-transparent">
+        <div className="flex items-center justify-between mb-2">
+          {/* Date stamp */}
+          {dateStr && (
+            <div className="flex items-center gap-2 text-zinc-400 text-[12px] font-semibold uppercase tracking-wider">
+              <FaRegClock className="text-[#ff5a00] text-[11px] shrink-0" />
+              <span>{dateStr}</span>
+            </div>
+          )}
+
+          {/* Price Badge */}
+          {post.price && (
+            <div className="text-[#ff5a00] text-[13px] font-black tracking-wide bg-[#ff5a00]/5 px-2.5 py-0.5 rounded-sm">
+              {post.price}
+            </div>
+          )}
+        </div>
+
+        {/* Title */}
+        <h3 className="text-zinc-900 font-black text-[20px] md:text-[22px] leading-tight mb-5 line-clamp-2 group-hover/card:text-[#ff5a00] transition-colors duration-300">
+          {post.name}
+        </h3>
+
+        {/* Nút Xem chi tiết trượt cam-trắng */}
+        <div className="mt-auto">
+          <Link
+            to={`/bai-viet/${post.id}`}
+            className="group/btn relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[25px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] hover:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] no-underline transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] hover:after:translate-y-0 after:transition-transform after:duration-300"
+          >
+            <span>XEM CHI TIẾT</span>
+            <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] ml-[20px] bg-[#ff6600] group-hover/btn:bg-white text-white group-hover/btn:text-[#ff6600] transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Post() {
-  const company = useSelector((state) => state.company.company)
-  const [posts, setPosts] = useState([])
+  const company = useSelector((state) => state.company.company);
+  const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const [pagination, setPagination] = useState({
     currentPage: 1,
     pageSize: 20
   });
-  var totalPages = 1;
+
+  const [totalPages, setTotalPages] = useState(1);
+
+
   useEffect(() => {
     const fetchApi = async () => {
       try {
         const response = await getPosts(pagination);
         if (response.status === 200) {
-          setPosts(prev => ([...posts, ...response.data.data]));
-          totalPages = response.data.totalPages;
+          setPosts(prev => {
+            const existingIds = new Set(prev.map(p => p.id));
+            const newPosts = response.data.data.filter(p => !existingIds.has(p.id));
+            return [...prev, ...newPosts];
+          });
+          setTotalPages(response.data.totalPages || 1);
         }
       } catch (error) {
-        console.error("Lỗi khi lấy danh sách category:", error);
-        setError(true)
+        console.error("Lỗi khi lấy danh sách bài viết:", error);
+        setError(true);
       } finally {
         setLoading(false);
       }
     };
     fetchApi();
-  }, []);
+  }, [pagination.currentPage]);
 
-  if (isLoading) return (<div>Đang tải dữ liệu</div>)
-  if (isError) return (<div>Hệ thôgns đang lỗi</div>)
+  if (isLoading && posts.length === 0) return (
+    <div className="flex items-center justify-center py-24 text-zinc-500 text-[12px] font-extrabold uppercase tracking-[0.2em]">
+      ĐANG TẢI DỮ LIỆU KHÔNG GIAN...
+    </div>
+  );
+
+  if (isError) return (
+    <div className="flex items-center justify-center py-24 text-red-500 text-[12px] font-extrabold uppercase tracking-[0.2em]">
+      HỆ THỐNG GẶP SỰ CỐ KẾT NỐI!
+    </div>
+  );
 
   const handleClick_morePost = () => {
     setPagination(prev => ({
@@ -44,52 +153,58 @@ function Post() {
       currentPage: prev.currentPage + 1
     }));
   };
+
   return (
-    <div className="mt-4">
-      <h1 className="mb-4">Công trình đã bàn giao</h1>
-      <div className="flex flex-col gap-y-4">
-        {
-          posts.length > 0 && posts?.map((post, index) => (
-            <div className="flex gap-x-2 items-start">
-              <div className="w-10 h-10 rounded-full overflow-hidden">
-                <img src="data:image/png;base64,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" alt=""
-                  className="w-full h-full object-cover object-center" />
-              </div>
-              <div key={index} className="border border-gray-400 p-4 rounded-3xl flex-1">
-                <Link to={`/bai-viet/${post.id}`}>
-                  <div className="font-bold mb-2">{company.name}</div>
-                  <div className="font-bold mb-2">{post.name}</div>
-                  <div className="mb-2">{post.name}... <span className="font-thin text-black">Xem chi tiết</span></div>
-                </Link>
-                <div>
-                  <FacebookImageGrid post={post} />
-                </div>
-                <div className="font-bold text-red-600 my-1">{post.price}</div>
-                <ul className="flex justify-start gap-x-4">
-                  <li className="flex items-center justify-center gap-x-2">
-                    <IoIosHeartEmpty size={26} />
-                    <span>{post.likeCount}</span>
-                  </li>
-                  <li className="flex items-center justify-center gap-x-2">
-                    <TfiComment size={22} />
-                    <span>{post.likeCount}</span>
-                  </li>
-                  <li>
-                    <PiShareFatThin size={30} />
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ))
-        }
+    <div id="post-section" className="mt-16 font-['Titillium_Web',sans-serif] px-6 max-w-7xl mx-auto mb-20 overflow-hidden">
+      {/* SECTION HEADING */}
+      <div className="flex flex-col items-start justify-between md:flex-row md:items-end border-b border-zinc-100 pb-8 mb-12">
+        <div>
+          <span className="text-[#ff5a00] uppercase tracking-[0.3em] text-[11px] font-extrabold block mb-3">
+            Portfolio / Kiến tạo giá trị
+          </span>
+          <h2 className="text-3xl md:text-[42px] text-zinc-900 font-black leading-none uppercase tracking-tight">
+            Dự án đã bàn giao
+          </h2>
+        </div>
+        <div className="mt-4 md:mt-0 text-zinc-400 text-sm font-light max-w-xs">
+          Minh chứng năng lực qua những công trình thực tế đã hoàn thiện xuất sắc.
+        </div>
       </div>
-      {totalPages != 1 && (
-        <div onClick={handleClick_morePost} className="mt-4 cursor-pointer text-center">
-          <button className="border border-gray-400 px-4 py-2 rounded-3xl">Xem thêm</button>
+
+      {/* POST GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12">
+        {posts.length > 0 && posts.map((post, index) => {
+          const dateStr = formatDate(post.createdAt || post.date);
+          return (
+            <PostCard
+              key={post.id || index}
+              post={post}
+              index={index}
+              dateStr={dateStr}
+            />
+          );
+        })}
+      </div>
+
+      {/* LOAD MORE BUTTON */}
+      {pagination.currentPage < totalPages && (
+        <div className="mt-20 flex justify-center">
+          <button
+            onClick={handleClick_morePost}
+            className="group/more relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[30px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] hover:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] no-underline transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] hover:after:translate-y-0 after:transition-transform after:duration-300"
+          >
+            <span>XEM THÊM DỰ ÁN</span>
+            <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] ml-[30px] bg-[#ff6600] group-hover/more:bg-white text-white group-hover/more:text-[#ff6600] transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
+          </button>
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default Post;
