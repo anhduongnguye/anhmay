@@ -66,9 +66,9 @@ function Header() {
         <div className="w-[280px] h-full bg-[#151515] flex items-center justify-center px-6 border-r border-[#ffffff0d] shrink-0">
           <Link to="/" aria-label="Về trang chủ">
             <img
-              src={"https://reactheme.com/products/html/elevate/assets/images/logo/02.png"}
-              alt="Elevate Logo"
-              className="h-[50px] w-auto object-contain"
+              src={company.logo}
+              alt="Nguyễn May Construction Logo"
+              className="w-[220px] max-w-full h-auto max-h-[85px] object-contain"
             />
           </Link>
         </div>
@@ -149,8 +149,8 @@ function Header() {
         <Link to="/" aria-label="Về trang chủ">
           <img
             src={company.logo || "https://reactheme.com/products/html/elevate/assets/images/logo/02.png"}
-            alt="Elevate Logo"
-            className="h-[40px] w-auto object-contain"
+            alt="Nguyễn May Construction Logo"
+            className="w-[160px] max-w-[55vw] h-auto max-h-[52px] object-contain"
           />
         </Link>
         <button

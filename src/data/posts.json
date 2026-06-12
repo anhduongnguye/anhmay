@@ -1,110 +1,189 @@
 [
   {
-    "id": "cua-sat-my-thuat-01",
-    "name": "Cửa cổng sắt mỹ thuật 4 cánh - biệt thự anh Hùng",
+    "id": "cua-sat-my-thuat",
+    "name": "Cửa cổng sắt mỹ thuật",
     "description": "Thi công bằng sắt pano dày dặn, kết hợp hoa văn uốn lượn tinh xảo, sơn tĩnh điện 3 lớp chống rỉ sét.",
-    "price": "Từ 1.400.000đ / m²",
-    "thumbnail": "https://picsum.photos/id/292/800/600",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/8gCyVRvx/baocaothutap-1.jpg",
     "images": [
-      "https://picsum.photos/id/292/800/600",
-      "https://picsum.photos/id/293/800/600"
+      "https://i.ibb.co/8gCyVRvx/baocaothutap-1.jpg",
+      "https://i.ibb.co/5gMvdS9F/z7927135861684-67b8a6997e18082115861ffd248593d8.jpg",
+      "https://i.ibb.co/bjJnzBDg/z7927135880950-d2c6715f3324204b8cddf1639c34b747.jpg",
+      "https://i.ibb.co/WpWWq4g3/z7927135888465-1628ac090247735d692e3ca77a1fd06b.jpg"
     ],
-    "createdAt": "2 giờ trước",
-    "categories": ["cua-sat", "hang-rao-bao-ve"],
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
     "likeCount": 185,
     "commentCount": 34,
     "priority": 1,
     "isActive": true
   },
   {
-    "id": "mai-ton-cach-nhiet-02",
-    "name": "Mái tôn cách nhiệt chống nóng chống ồn - Nhà chị Lan",
-    "description": "Anh em vừa hoàn thiện xong hệ mái tôn chống nóng 3 lớp cho nhà chị Lan tại Phong Điền. Khung đòn tay sắt hộp mạ kẽm siêu chắc chắn, bất chấp mùa mưa bão sắp tới nhé mọi người! 🌧️ Đã bàn giao đúng tiến độ. #maiton #tiendo",
-    "price": "Từ 480.000đ / m²",
-    "thumbnail": "https://picsum.photos/id/191/800/600",
+    "id": "cua-cong-sat-hien-dai",
+    "name": "Cửa cổng sắt hộp hiện đại",
+    "description": "Thi công bằng sắt hộp dày dặn, thiết kế thanh lịch theo phong cách tối giản, kết hợp nan sắt dọc nan ngang và điểm xuyết giả gỗ sang trọng. Sơn tĩnh điện cao cấp chống rỉ sét, độ bền màu cao.",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/k2w3Ty0G/z7927135801144-c34854cdf470225cfde0615ed13152ae.jpg",
     "images": [
-      "https://picsum.photos/id/191/800/600",
-      "https://picsum.photos/id/192/800/600",
-      "https://picsum.photos/id/193/800/600"
+      "https://i.ibb.co/k2w3Ty0G/z7927135801144-c34854cdf470225cfde0615ed13152ae.jpg",
+      "https://i.ibb.co/4R6G7L8R/z7927135803225-d91767fb4ef9ce0347bac08a8faf708a.jpg",
+      "https://i.ibb.co/5h3vQJV6/z7927135829082-2dcbad645269a4bf6ed09bbe211b4bed.jpg"
     ],
-    "createdAt": "Hôm qua",
-    "categories": ["mai-ton"],
-    "likeCount": 94,
-    "commentCount": 12,
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 142,
+    "commentCount": 28,
     "priority": 2,
     "isActive": true
   },
   {
-    "id": "lan-can-cau-thang-03",
-    "name": "Cầu thang sắt xương cá uốn nghệ thuật - Anh Minh",
-    "description": "Lên đồ cho một căn nhà phố hiện đại. Mẫu cầu thang sắt xương cá kết hợp mặt bậc gỗ tự nhiên uốn lượn mềm mại, vừa tiết kiệm không gian lại cực kỳ sang trọng. Tay vịn chắc chắn, sơn tĩnh điện màu đen mờ cực cuốn. Bác nào ưng mẫu này để lại chấm em báo giá nhé! #cauthang #lancan",
-    "price": "Từ 1.200.000đ / mét dài",
-    "thumbnail": "https://picsum.photos/id/84/800/600",
+    "id": "ton-op-vach-ngoai-troi",
+    "name": "Thi công tôn ốp vách tường chống thấm, chống nóng ngoài trời",
+    "description": "Giải pháp bảo vệ toàn diện cho ngôi nhà trước mọi điều kiện thời tiết khắc nghiệt. Sử dụng tôn lạnh/tôn màu cao cấp chính hãng, thi công ốp vách đứng chuẩn kỹ thuật, giúp chống thấm dột tuyệt đối cho tường ngoài, đồng thời hạ nhiệt, chống nóng hiệu quả cho không gian sống bên trong. Công trình thực tế được thực hiện bởi đội ngũ thợ tay nghề cao, đảm bảo độ phẳng, tính thẩm mỹ và độ bền kết cấu vững vàng theo thời gian.",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/YFyWyd8X/z7927135733480-65ed6769a007b75062640105aeb751bb.jpg",
     "images": [
-      "https://picsum.photos/id/84/800/600",
-      "https://picsum.photos/id/85/800/600",
-      "https://picsum.photos/id/87/800/600",
-      "https://picsum.photos/id/88/800/600",
-      "https://picsum.photos/id/89/800/600",
-      "https://picsum.photos/id/90/800/600"
+      "https://i.ibb.co/YFyWyd8X/z7927135733480-65ed6769a007b75062640105aeb751bb.jpg",
+      "https://i.ibb.co/9k0CTX02/z7927135685973-710b3605f0dbb8e897de7349e92cdd01.jpg",
+      "https://i.ibb.co/QZMKnVf/z7927135689405-6f59140e22bc13a6d6755b99daf78232.jpg",
+      "https://i.ibb.co/Rp4WDsBW/z7927135695054-e0707694f80af0364343aef12b7a2e7b.jpg",
+      "https://i.ibb.co/vvrm9j7v/z7927135728282-23f6a666710b14df092acee7d66db383.jpg",
+      "https://i.ibb.co/bMx5D5jc/z7927135762718-41d4f9b89eb92397ef821f697fdab844.jpg",
+      "https://i.ibb.co/HfgVK0bB/z7927135765259-5219101f8c35b1d0c894e054a1479d4f.jpg"
     ],
-    "createdAt": "3 ngày trước",
-    "categories": ["lan-can-cau-thang"],
-    "likeCount": 245,
-    "commentCount": 56,
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 218,
+    "commentCount": 45,
     "priority": 3,
     "isActive": true
   },
   {
-    "id": "hang-rao-bao-ve-04",
-    "name": "Hàng rào sắt hộp bảo vệ chống trộm - Biệt thự vườn",
-    "description": "Bảo vệ an toàn cho gia đình với hệ thống hàng rào chông sắt hộp mạ kẽm. Hoa văn đơn giản nhưng tinh tế, khoảng cách thanh sắt đạt chuẩn an toàn, lớp sơn ngoài trời chống bong tróc cực tốt dưới thời tiết khắc nghiệt. #hangrao #tiendo",
-    "price": "Từ 650.000đ / m²",
-    "thumbnail": "https://picsum.photos/id/89/800/600",
+    "id": "lan-can-cau-thang-sat-tay-vin-go",
+    "name": "Thi công lan can cầu thang sắt nghệ thuật kết hợp tay vịn gỗ cao cấp",
+    "description": "Sản phẩm được gia công từ sắt xương cá cứng cáp kết hợp hoa văn uốn mỹ thuật tinh tế. Phần tay vịn bằng gỗ tự nhiên được xử lý mượt mà, sơn phủ bóng chống mối mọt, mang lại vẻ đẹp sang trọng, hiện đại cho không gian ngôi nhà.",
+    "price": "Liên hệ nhận báo giá theo mét dài",
+    "thumbnail": "https://i.ibb.co/LdV1HF2D/z7927142595734-cf1ac8b370c9415be525fc71ec9328d6.jpg",
     "images": [
-      "https://picsum.photos/id/89/800/600",
-      "https://picsum.photos/id/90/800/600"
+      "https://i.ibb.co/LdV1HF2D/z7927142595734-cf1ac8b370c9415be525fc71ec9328d6.jpg",
+      "https://i.ibb.co/ycksLxQK/z7927142604610-a3fba45bf082f2871071d94a9af0871a.jpg",
+      "https://i.ibb.co/639wvjB/z7927142656445-1e30b9bd3000b94e24ed05ce1cde9d02.jpg"
     ],
-    "createdAt": "1 tuần trước",
-    "categories": ["hang-rao-bao-ve", "cua-sat"],
-    "likeCount": 112,
-    "commentCount": 18,
+    "createdAt": "Vừa xong",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 79,
+    "commentCount": 3,
     "priority": 4,
     "isActive": true
   },
   {
-    "id": "nha-tien-che-san-thuong-05",
-    "name": "Khung nhà thép tiền chế làm quán cafe sân thượng",
-    "description": "Giải pháp tối ưu không gian kinh doanh cho chủ nhà tại trung tâm TP. Thi công nhanh gọn bằng khung thép đúc chịu lực, sàn tấm xi măng nhẹ Cemboard. Tiết kiệm 40% thời gian so với xây dựng truyền thống mà kết cấu cực kỳ vững chãi. #nhatience #maiton",
+    "id": "thi-cong-mai-ton-khung-thep",
+    "name": "Thi công mái tôn che sân và hệ khung thép chịu lực cao cấp",
+    "description": "Dịch vụ thiết kế và thi công trọn gói mái tôn, mái che không gian ngoài trời cho nhà phố, biệt thự và nhà xưởng. Dự án sử dụng hệ thống khung kèo sắt hộp gia công chịu lực kết cấu vững vàng, kết hợp vật liệu tôn lạnh cách nhiệt chính hãng cùng tấm lấy sáng cao cấp. Đảm bảo quy trình lắp đặt an toàn, đúng tiến độ, mang lại giải pháp che mưa nắng hoàn hảo và tối ưu thẩm mỹ cho mọi công trình.",
     "price": "Liên hệ báo giá",
-    "thumbnail": "https://picsum.photos/id/445/800/600",
+    "thumbnail": "https://i.ibb.co/XkDMdPtv/z7927143032403-b4ec3195915ad9ec2b9c4884418173aa.jpg",
     "images": [
-      "https://picsum.photos/id/445/800/600",
-      "https://picsum.photos/id/446/800/600"
+      "https://i.ibb.co/XkDMdPtv/z7927143032403-b4ec3195915ad9ec2b9c4884418173aa.jpg",
+      "https://i.ibb.co/qYDQrvBQ/z7927143038274-cf6a95893a1aaca870dc5acd24f86b26.jpg",
+      "https://i.ibb.co/4nWKrtCr/z7927143034991-4eb2f230514259c16ddcca04b4cff523.jpg",
+      "https://i.ibb.co/V0Cd0SwP/z7927142900237-9f07426c5b5b68cbeacd8f474e07e2b3.jpg"
     ],
-    "createdAt": "1 tuần trước",
-    "categories": ["mai-ton"],
-    "likeCount": 310,
-    "commentCount": 89,
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 195,
+    "commentCount": 32,
     "priority": 5,
     "isActive": true
   },
   {
-    "id": "cua-so-ban-hop-06",
-    "name": "Hệ thống cửa sổ và khung bảo vệ sắt nghệ thuật",
-    "description": "Vừa lắp đặt xong trọn bộ khung bảo vệ cửa sổ cho căn hộ chung cư. Thiết kế thanh thoát, không gây cảm giác tù túng nhưng vẫn đảm bảo chống trộm tuyệt đối cho gia chủ. Cảm ơn anh chị đã tin tưởng giao hạng mục này cho anh em xưởng! ❤️ #cuasat",
-    "price": "Từ 850.000đ / bộ",
-    "thumbnail": "https://picsum.photos/id/364/800/600",
+    "id": "thi-cong-nha-xuong-khung-thep",
+    "name": "Thi công nhà xưởng tiền chế và hệ vách tôn bao che chuyên nghiệp",
+    "description": "Giải pháp thiết kế, lắp dựng nhà xưởng kết cấu thép và vách tôn trọn gói, tối ưu chi phí cho doanh nghiệp. Dự án sử dụng hệ thống khung kèo thép vòm chịu lực khẩu độ lớn, kết hợp tôn vách đứng bao quanh giúp chống mưa nắng, cách nhiệt và bảo vệ hàng hóa, thiết bị tối đa. Toàn bộ quy trình từ dựng cột, bọc vách đến gia cố được đội ngũ thợ tay nghề cao triển khai trên giàn giáo an toàn, đúng tiêu chuẩn kỹ thuật xây dựng.",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/dvjR8QB/z7927143182266-af4a74c671c47e3dd015522815e32fe8.jpg",
     "images": [
-      "https://picsum.photos/id/364/800/600",
-      "https://picsum.photos/id/365/800/600",
-      "https://picsum.photos/id/366/800/600"
+      "https://i.ibb.co/dvjR8QB/z7927143182266-af4a74c671c47e3dd015522815e32fe8.jpg",
+      "https://i.ibb.co/FkzY5wVf/z7927143188123-bfe93b6ebec97ceee5a12099331ca4a8.jpg",
+      "https://i.ibb.co/v4ByR3nm/z7927143188575-2692e262c93ef92e7e0f6539485628fb.jpg",
+      "https://i.ibb.co/rfpyPVf0/z7927143190794-22e669744d7d785738ccbca6a168340f.jpg",
+      "https://i.ibb.co/Fb1f5dM4/z7927143185547-cc91a1f2594f861bb2f12476dd03e833.jpg"
     ],
-    "createdAt": "2 tuần trước",
-    "categories": ["cua-sat"],
-    "likeCount": 78,
-    "commentCount": 9,
-    "priority": 6,
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 312,
+    "commentCount": 54,
+    "priority": 7,
+    "isActive": true
+  },
+  {
+    "id": "hoan-thien-nha-tro-cao-cap",
+    "name": "Hoàn thiện và bàn giao dự án nhà trọ cao cấp",
+    "description": "Chính thức hoàn thiện và bàn giao chuỗi phòng trọ cao cấp với thiết kế tối ưu không gian. Căn phòng sở hữu gác lửng lót sàn sang trọng, hệ thống cầu thang kết cấu sắt hộp vững chắc, kết hợp đầy đủ tiện nghi khép kín bao gồm tủ đồ thông minh, khu vực bếp tiện lợi và điều hòa mát mẻ. Đây là giải pháp không gian sống lý tưởng, đáp ứng trọn vẹn tiêu chuẩn thẩm mỹ và chất lượng cho phân khúc căn hộ dịch vụ, nhà trọ thế hệ mới.",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/mrJgTvNm/z7927692540599-858936fe5732fc55b4b586cc1c1876c1.jpg",
+    "images": [
+      "https://i.ibb.co/mrJgTvNm/z7927692540599-858936fe5732fc55b4b586cc1c1876c1.jpg",
+      "https://i.ibb.co/XkMbRP7Y/z7927692496037-58b572891f2500b255a946c47490678d.jpg",
+      "https://i.ibb.co/MDvLxT5N/z7927692507118-97dbd5f588b56b5585da0ac0af3c431a.jpg",
+      "https://i.ibb.co/1GKNkzLX/z7927692538366-77b2f7739ffa497ed135db7830a595cb.jpg",
+      "https://i.ibb.co/BV1d7kCh/z7927692476482-d9c39c60b28c2e9c9a387002cc53f8d8.jpg",
+      "https://i.ibb.co/BHzPqBzH/z7927692540923-37833a0164d4c6163807489578266665.jpg",
+      "https://i.ibb.co/vCjY4k8Y/z7927692541943-c9e527d3ad296f139eec9ee99a529736.jpg"
+    ],
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 389,
+    "commentCount": 62,
+    "priority": 3,
+    "isActive": true
+  },
+  {
+    "id": "thi-cong-mai-ton-san-bao-ve",
+    "name": "Thi công mái tôn che sân chịu lực kết hợp lưới bảo vệ an toàn",
+    "description": "Giải pháp thiết kế và lắp đặt trọn gói mái che sân ngoài trời với kết cấu xà gồ sắt hộp sơn đen mờ chịu lực, mang lại vẻ đẹp hiện đại và vững chãi cho ngôi nhà. Dự án sử dụng tôn lạnh cách nhiệt cao cấp chống nóng hiệu quả, đồng thời kết hợp gia cố hệ thống lưới thép bảo vệ phía trên, giúp tối ưu hóa an ninh và độ an toàn tuyệt đối cho khuôn viên sinh hoạt bên dưới.",
+    "price": "Liên hệ báo giá",
+    "thumbnail": "https://i.ibb.co/CcbMY27/z7927692442796-817ee3b7feb16678687b349332495d41.jpg",
+    "images": [
+      "https://i.ibb.co/CcbMY27/z7927692442796-817ee3b7feb16678687b349332495d41.jpg",
+      "https://i.ibb.co/Tqvk0XT9/z7927692457336-051833b92c24ab5caee491b178274f80.jpg"
+    ],
+    "createdAt": "",
+    "categories": [
+      "1",
+      "2",
+      "3"
+    ],
+    "likeCount": 168,
+    "commentCount": 24,
+    "priority": 8,
     "isActive": true
   }
 ]

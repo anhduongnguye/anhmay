@@ -1,25 +1,25 @@
 [
   {
-    "id": "cua-sat",
-    "name": "Cửa Sắt & Cửa Cổng",
+    "id": "1",
+    "name": "Thi công & Lắp đặt",
     "description": "",
-    "thumbnail": "",
+    "thumbnail": "https://i.pinimg.com/736x/64/ee/89/64ee8933d8fe4d53b42cac1574e91c9a.jpg",
     "priority": 1,
     "isActive": true
   },
   {
-    "id": "mai-ton",
-    "name": "Mái Tôn & Nhà Tiền Chế",
+    "id": "2",
+    "name": "Gia công & Thiết kế",
     "description": "",
     "thumbnail": "",
     "priority": 2,
     "isActive": true 
   },
   {
-    "id": "cua-cuon",
-    "name": "Cửa cuốn",
+    "id": "3",
+    "name": "Sửa chữa & Bảo trì",
     "description": "",
-    "thumbnail": "",
+    "thumbnail": "https://i.pinimg.com/1200x/93/f4/9c/93f49c13bd16ca99819f1eef888da139.jpg",
     "priority": 3,
     "isActive": true 
   }

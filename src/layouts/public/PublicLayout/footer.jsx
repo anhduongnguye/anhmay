@@ -95,11 +95,11 @@ const Footer = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
         }`}>
           {/* Logo Area */}
-          <div className="logo-area border border-[#ffffff10] p-[20px] bg-black/30 backdrop-blur-sm hover:border-[#ff5a00] transition-colors duration-300">
+          <div className="logo-area border border-[#ffffff10] p-[16px] px-[24px] bg-black/30 backdrop-blur-sm hover:border-[#ff5a00] transition-colors duration-300">
             <img 
-              src="https://reactheme.com/products/html/elevate/assets/images/logo/02.png" 
-              alt="Elevate Construction Logo" 
-              className="h-[45px] w-auto" 
+              src={company.logo} 
+              alt="Nguyễn May Construction Logo" 
+              className="w-[220px] max-w-full h-auto max-h-[70px] object-contain" 
             />
           </div>
 
