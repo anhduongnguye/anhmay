@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Category from "../categories/Category";
 import Post from "../posts/Post";
 import Contact from "../../../layouts/public/PublicLayout/contact";

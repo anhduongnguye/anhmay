@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { scrollToElement } from "../../utils/motion";
 import {
   FaFacebookF,
   FaTwitter,
@@ -22,10 +23,7 @@ function Paner({ company }) {
   const handleScroll = (e, targetId) => {
     e.preventDefault();
     const cleanId = targetId.replace("#", "");
-    const element = document.getElementById(cleanId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    scrollToElement(document.getElementById(cleanId));
   };
 
   const slides = [

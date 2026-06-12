@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useScrollToSection } from '../../../hooks/useScrollToSection';
 
 import { 
   FaFacebookF, 
@@ -20,21 +20,10 @@ const Footer = () => {
   const footerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const company = useSelector((state) => state.company.company);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const scrollToSection = useScrollToSection();
 
   const handleFooterScroll = (e, sectionId) => {
-    e.preventDefault();
-    if (location.pathname === '/') {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      navigate('/');
-      setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 400);
-    }
+    scrollToSection(sectionId, e);
   };
 
   useEffect(() => {

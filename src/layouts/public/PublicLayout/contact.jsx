@@ -11,6 +11,7 @@ export default function Contact() {
     details: '',
     acceptTerms: false
   });
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   // Thiết lập bộ dò tìm tọa độ cuộn màn hình
   const containerRef = useRef(null);
@@ -38,6 +39,9 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dữ liệu form gửi đi:", formData);
+    setSubmitStatus('success');
+    setFormData({ name: '', phone: '', details: '', acceptTerms: false });
+    setTimeout(() => setSubmitStatus(null), 5000);
   };
 
   return (
@@ -119,11 +123,15 @@ export default function Contact() {
 
           {/* ================= CỘT PHẢI: FORM ĐĂNG KÝ (HIỆU ỨNG TRƯỢT LÊN + DELAY) ================= */}
           <form 
-            onSubmit={handleSubmit} 
+            onSubmit={handleSubmit}
+            aria-label="Form yêu cầu báo giá"
             className={`w-full lg:w-[65%] p-8 md:p-12 lg:p-14 flex flex-col justify-center bg-white transition-all duration-[1200ms] delay-200 transform ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
             }`}
           >
+            <div role="status" aria-live="polite" className="sr-only">
+              {submitStatus === 'success' && 'Yêu cầu của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm.'}
+            </div>
             {/* Tiêu đề góc Form */}
             <div className="mb-8">
               <h3 className="text-2xl md:text-[32px] font-black text-zinc-900 uppercase tracking-tight">
@@ -171,6 +179,12 @@ export default function Contact() {
                 className="w-full p-5 bg-zinc-50 border border-zinc-100 focus:border-[#ff5a00] text-zinc-800 placeholder-zinc-400 font-medium text-[15px] outline-none focus:shadow-[0_0_15px_rgba(255,90,0,0.08)] transition-all duration-300 rounded-[2px] resize-none"
               ></textarea>
             </div>
+
+            {submitStatus === 'success' && (
+              <p className="mt-6 text-[14px] font-semibold text-emerald-600" role="status">
+                Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.
+              </p>
+            )}
 
             {/* Điều khoản bảo mật & Nút Gửi */}
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">

@@ -56,18 +56,19 @@ function PostCard({ post, index, dateStr }) {
         <FacebookImageGrid post={post} />
       </div>
 
-      {/* Content Section */}
-      <div className="flex flex-col flex-grow pt-5 pb-2 bg-transparent">
+      <Link
+        to={`/bai-viet/${post.id}`}
+        aria-label={`Xem chi tiết ${post.name}`}
+        className="group/link flex flex-col flex-grow pt-5 pb-2 no-underline text-inherit cursor-pointer"
+      >
         <div className="flex items-center justify-between mb-2">
-          {/* Date stamp */}
           {dateStr && (
             <div className="flex items-center gap-2 text-zinc-400 text-[12px] font-semibold uppercase tracking-wider">
-              <FaRegClock className="text-[#ff5a00] text-[11px] shrink-0" />
+              <FaRegClock className="text-[#ff5a00] text-[11px] shrink-0" aria-hidden="true" />
               <span>{dateStr}</span>
             </div>
           )}
 
-          {/* Price Badge */}
           {post.price && (
             <div className="text-[#ff5a00] text-[13px] font-black tracking-wide bg-[#ff5a00]/5 px-2.5 py-0.5 rounded-sm">
               {post.price}
@@ -75,27 +76,22 @@ function PostCard({ post, index, dateStr }) {
           )}
         </div>
 
-        {/* Title */}
-        <h3 className="text-zinc-900 font-black text-[20px] md:text-[22px] leading-tight mb-5 line-clamp-2 group-hover/card:text-[#ff5a00] transition-colors duration-300">
+        <h3 className="text-zinc-900 font-black text-[20px] md:text-[22px] leading-tight mb-5 line-clamp-2 group-hover/card:text-[#ff5a00] group-hover/link:text-[#ff5a00] transition-colors duration-300">
           {post.name}
         </h3>
 
-        {/* Nút Xem chi tiết trượt cam-trắng */}
         <div className="mt-auto">
-          <Link
-            to={`/bai-viet/${post.id}`}
-            className="group/btn relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[25px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] hover:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] no-underline transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] hover:after:translate-y-0 after:transition-transform after:duration-300"
-          >
+          <span className="group/btn relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[25px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] group-hover/link:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] group-hover/link:after:translate-y-0 after:transition-transform after:duration-300">
             <span>XEM CHI TIẾT</span>
-            <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] ml-[20px] bg-[#ff6600] group-hover/btn:bg-white text-white group-hover/btn:text-[#ff6600] transition-colors duration-300">
+            <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] ml-[20px] bg-[#ff6600] group-hover/link:bg-white text-white group-hover/link:text-[#ff6600] transition-colors duration-300" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7" />
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </span>
-          </Link>
+          </span>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
@@ -111,7 +107,7 @@ function Post() {
   });
 
   const [totalPages, setTotalPages] = useState(1);
-
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -130,6 +126,7 @@ function Post() {
         setError(true);
       } finally {
         setLoading(false);
+        setIsLoadingMore(false);
       }
     };
     fetchApi();
@@ -148,6 +145,7 @@ function Post() {
   );
 
   const handleClick_morePost = () => {
+    setIsLoadingMore(true);
     setPagination(prev => ({
       ...prev,
       currentPage: prev.currentPage + 1
@@ -190,10 +188,13 @@ function Post() {
       {pagination.currentPage < totalPages && (
         <div className="mt-20 flex justify-center">
           <button
+            type="button"
             onClick={handleClick_morePost}
-            className="group/more relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[30px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] hover:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] no-underline transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] hover:after:translate-y-0 after:transition-transform after:duration-300"
+            disabled={isLoadingMore}
+            aria-busy={isLoadingMore}
+            className="group/more relative z-10 overflow-hidden inline-flex items-center w-fit h-[52px] pl-[30px] pr-[5px] py-[5px] bg-transparent text-[#0C0A0A] hover:text-white border border-[#ff6600] rounded-[2px] text-[14px] font-bold uppercase tracking-[0.08em] no-underline transition-colors duration-300 after:content-[''] after:absolute after:inset-0 after:bg-[#ff6600] after:-z-10 after:translate-y-[110%] hover:after:translate-y-0 after:transition-transform after:duration-300 disabled:opacity-60 disabled:cursor-wait"
           >
-            <span>XEM THÊM DỰ ÁN</span>
+            <span>{isLoadingMore ? 'ĐANG TẢI...' : 'XEM THÊM DỰ ÁN'}</span>
             <span className="flex items-center justify-center shrink-0 w-[40px] h-[40px] ml-[30px] bg-[#ff6600] group-hover/more:bg-white text-white group-hover/more:text-[#ff6600] transition-colors duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7" />

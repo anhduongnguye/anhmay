@@ -103,7 +103,7 @@ function Category() {
                     isVisible ? `translate-y-0 opacity-100 ${currentDelay}` : "translate-y-16 opacity-0"
                   }`}
                 >
-                  <Link to={`/danh-muc/${category.id}`} className="flex flex-col h-full">
+                  <Link to={`/danh-muc/${category.id}`} className="flex flex-col h-full" aria-label={`Xem dịch vụ ${category.name}`}>
                     
                     {/* KHUNG ẢNH: Tỷ lệ vàng 4:3, Hiệu ứng thu phóng Ken Burns chậm cực sang */}
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616]">

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import PostRelated from "../PostRelated";
 import { useSelector } from "react-redux";
 import FacebookImageGrid from "../../FacebookImageGrid";
+import { useScrollToSection } from "../../../../hooks/useScrollToSection";
+import { scrollToTop } from "../../../../utils/motion";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TfiComment } from "react-icons/tfi";
 import { PiShareFatThin } from "react-icons/pi";
@@ -15,11 +17,10 @@ function PostDetail() {
   const [post, setPost] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const scrollToSection = useScrollToSection();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setVisible(false);
+    scrollToTop();
     setLoading(true);
     setPost(null);
     setError(false);
@@ -35,7 +36,6 @@ function PostDetail() {
         setError(true);
       } finally {
         setLoading(false);
-        setTimeout(() => setVisible(true), 50);
       }
     };
     fetchApi();
@@ -74,20 +74,19 @@ function PostDetail() {
     : "";
 
   return (
-    <div
-      className="w-full font-sans bg-[#0d0d0d]"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1)",
-      }}
-    >
+    <div className="w-full font-sans bg-[#0d0d0d]">
       {/* ══ HERO BREADCRUMB BAND ══ */}
       <div className="w-full bg-[#111111] border-b border-[#ffffff0d] py-5 px-6">
         <div className="max-w-6xl mx-auto flex items-center gap-2 text-[12px] font-semibold uppercase tracking-widest text-zinc-500">
           <Link to="/" className="hover:text-[#ff5a00] transition-colors duration-200">Trang chủ</Link>
           <FaChevronRight className="text-[9px] text-zinc-700" />
-          <Link to="/" className="hover:text-[#ff5a00] transition-colors duration-200">Công trình</Link>
+          <a
+            href="/#post-section"
+            onClick={(e) => scrollToSection('post-section', e)}
+            className="hover:text-[#ff5a00] transition-colors duration-200"
+          >
+            Công trình
+          </a>
           <FaChevronRight className="text-[9px] text-zinc-700" />
           <span className="text-zinc-400 line-clamp-1">{post?.name}</span>
         </div>
@@ -155,18 +154,18 @@ function PostDetail() {
 
               {/* Thanh tương tác */}
               <div className="flex items-center gap-6 bg-white px-6 py-4 border-l-4 border-[#ff5a00] shadow-sm">
-                <button className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
-                  <IoIosHeartEmpty className="text-[18px]" />
+                <button type="button" aria-label={`Thích bài viết, ${post?.likeCount ?? 0} lượt thích`} className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
+                  <IoIosHeartEmpty className="text-[18px]" aria-hidden="true" />
                   <span>{post?.likeCount ?? 0}</span>
                 </button>
-                <div className="w-px h-5 bg-zinc-200" />
-                <button className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
-                  <TfiComment className="text-[14px]" />
+                <div className="w-px h-5 bg-zinc-200" aria-hidden="true" />
+                <button type="button" aria-label={`Bình luận, ${post?.commentCount ?? 0} bình luận`} className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
+                  <TfiComment className="text-[14px]" aria-hidden="true" />
                   <span>{post?.commentCount ?? 0}</span>
                 </button>
-                <div className="w-px h-5 bg-zinc-200" />
-                <button className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
-                  <PiShareFatThin className="text-[18px]" />
+                <div className="w-px h-5 bg-zinc-200" aria-hidden="true" />
+                <button type="button" aria-label="Chia sẻ bài viết" className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
+                  <PiShareFatThin className="text-[18px]" aria-hidden="true" />
                   <span>Chia sẻ</span>
                 </button>
               </div>
@@ -254,13 +253,14 @@ function PostDetail() {
                 <p className="text-white font-black text-[18px] uppercase leading-snug mb-5">
                   Nhận báo giá<br/>miễn phí ngay
                 </p>
-                <Link
-                  to="/#lien-he"
+                <a
+                  href="/#lien-he"
+                  onClick={(e) => scrollToSection('lien-he', e)}
                   className="flex items-center justify-between bg-white text-[#ff5a00] hover:bg-[#111111] hover:text-white px-5 py-3 font-extrabold text-[12px] uppercase tracking-widest transition-colors duration-300 group"
                 >
                   <span>Yêu cầu báo giá</span>
-                  <FaChevronRight className="text-[10px] group-hover:translate-x-1 transition-transform" />
-                </Link>
+                  <FaChevronRight className="text-[10px] group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                </a>
               </div>
             </div>
 
