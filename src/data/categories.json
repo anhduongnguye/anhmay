@@ -3,7 +3,7 @@
     "id": "1",
     "name": "Thi công & Lắp đặt",
     "description": "",
-    "thumbnail": "https://i.pinimg.com/736x/64/ee/89/64ee8933d8fe4d53b42cac1574e91c9a.jpg",
+    "thumbnail": "https://images.unsplash.com/photo-1563166423-a78566af3dbe?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvbnN0cnVjdGlvbiUyMHdvcmtzfGVufDB8fDB8fHww",
     "priority": 1,
     "isActive": true
   },
@@ -11,7 +11,7 @@
     "id": "2",
     "name": "Gia công & Thiết kế",
     "description": "",
-    "thumbnail": "",
+    "thumbnail": "https://plus.unsplash.com/premium_photo-1664297997167-88170c57bc35?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVjaGFuaWNhbHxlbnwwfHwwfHx8MA%3D%3D",
     "priority": 2,
     "isActive": true 
   },

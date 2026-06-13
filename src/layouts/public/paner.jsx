@@ -52,6 +52,7 @@ function Paner({ company }) {
       serviceLink: "#category-section",
     }
   ]
+ 
 
   // Auto-play the slider
   useEffect(() => {

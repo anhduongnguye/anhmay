@@ -253,7 +253,7 @@ const Footer = () => {
                 <div className="flex gap-4 group/post">
                   <div className="overflow-hidden rounded-sm shrink-0 w-[80px] h-[75px]">
                     <img
-                      src={`https://images.unsplash.com/photo-1734888369502-3e01d4c0a46e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JpbmRpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww`}
+                      src={`https://i.ibb.co/8gCyVRvx/baocaothutap-1.jpg`}
                       alt="Post Thumbnail"
                       className="w-full h-full object-cover bg-gray-800 transition-transform duration-500 group-hover/post:scale-110"
                     />
@@ -263,9 +263,9 @@ const Footer = () => {
                       <FaRegClock className="text-[#ff5a00]" /> 21 tháng 05
                     </span>
                     <h6 className="text-white font-bold text-[14px] leading-tight hover:text-[#ff5a00] cursor-pointer transition-colors duration-300 block">
-                      Cách sử dụng máy mài an toàn
+                      Cửa cổng sắt mỹ thuật
                     </h6>
-                    <a href="#" className="text-[#ff5a00] hover:text-white transition-colors duration-300 text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 mt-1">
+                    <a href="/bai-viet/cua-sat-my-thuat" className="text-[#ff5a00] hover:text-white transition-colors duration-300 text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 mt-1">
                       XEM THÊM <FaArrowRight className="text-[10px]" />
                     </a>
                   </div>
@@ -273,19 +273,19 @@ const Footer = () => {
                  <div className="flex gap-4 group/post">
                   <div className="overflow-hidden rounded-sm shrink-0 w-[80px] h-[75px]">
                     <img
-                      src={`https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWV8ZW58MHx8MHx8fDA%3D`}
+                      src={`https://i.ibb.co/mrJgTvNm/z7927692540599-858936fe5732fc55b4b586cc1c1876c1.jpg`}
                       alt="Post Thumbnail"
                       className="w-full h-full object-cover bg-gray-800 transition-transform duration-500 group-hover/post:scale-110"
                     />
                   </div>
                   <div className="flex flex-col justify-between py-1">
                     <span className="text-[13px] text-gray-500 flex items-center gap-2">
-                      <FaRegClock className="text-[#ff5a00]" /> 14 tháng 02
+                      <FaRegClock className="text-[#ff5a00]" /> 21 tháng 05
                     </span>
                     <h6 className="text-white font-bold text-[14px] leading-tight hover:text-[#ff5a00] cursor-pointer transition-colors duration-300 block">
-                      Cần bao nhiêu vật liệu để thi công công trình?
+                      Hoàn thiện và bàn giao dự án nhà trọ cao cấp
                     </h6>
-                    <a href="#" className="text-[#ff5a00] hover:text-white transition-colors duration-300 text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 mt-1">
+                    <a href="/bai-viet/hoan-thien-nha-tro-cao-cap" className="text-[#ff5a00] hover:text-white transition-colors duration-300 text-[12px] font-bold uppercase tracking-wider flex items-center gap-1.5 mt-1">
                       XEM THÊM <FaArrowRight className="text-[10px]" />
                     </a>
                   </div>

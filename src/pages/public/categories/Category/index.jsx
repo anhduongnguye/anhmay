@@ -108,7 +108,7 @@ function Category() {
                     {/* KHUNG ẢNH: Tỷ lệ vàng 4:3, Hiệu ứng thu phóng Ken Burns chậm cực sang */}
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616]">
                       <img
-                        src={category.thumbnail || "https://reactheme.com/products/html/elevate/assets/images/project/38.jpg"}
+                        src={category.thumbnail}
                         alt={category.name}
                         className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[4000ms] ease-out"
                       />
