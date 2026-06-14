@@ -46,7 +46,6 @@ export default function Contact() {
 
   return (
     <div
-      id="lien-he"
       ref={containerRef}
       className="w-full pt-16 pb-24 bg-transparent font-['Titillium_Web',sans-serif] overflow-hidden"
     >
