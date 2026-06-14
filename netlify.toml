@@ -3,6 +3,9 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  VITE_SITE_URL = "https://cokhinguyenmay.netlify.app"
+
 # Định nghĩa chính xác MIME Type cho các file script để trình duyệt không chặn
 [[headers]]
   for = "/*.js"

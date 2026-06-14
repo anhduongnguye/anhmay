@@ -62,6 +62,11 @@ function PostCard({ post, index, dateStr }) {
         className="group/link flex flex-col flex-grow pt-5 pb-2 no-underline text-inherit cursor-pointer"
       >
         <div className="flex items-center justify-between mb-2">
+          {post.price && (
+            <div className="text-[#ff5a00] text-[13px] font-black tracking-wide bg-[#ff5a00]/5 px-2.5 py-0.5 rounded-sm">
+              {post.price}
+            </div>
+          )}
           {dateStr && (
             <div className="flex items-center gap-2 text-zinc-400 text-[12px] font-semibold uppercase tracking-wider">
               <FaRegClock className="text-[#ff5a00] text-[11px] shrink-0" aria-hidden="true" />
@@ -69,11 +74,7 @@ function PostCard({ post, index, dateStr }) {
             </div>
           )}
 
-          {post.price && (
-            <div className="text-[#ff5a00] text-[13px] font-black tracking-wide bg-[#ff5a00]/5 px-2.5 py-0.5 rounded-sm">
-              {post.price}
-            </div>
-          )}
+          
         </div>
 
         <h3 className="text-zinc-900 font-black text-[20px] md:text-[22px] leading-tight mb-5 line-clamp-2 group-hover/card:text-[#ff5a00] group-hover/link:text-[#ff5a00] transition-colors duration-300">

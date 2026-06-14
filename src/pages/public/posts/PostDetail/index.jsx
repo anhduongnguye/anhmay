@@ -8,8 +8,9 @@ import { useScrollToSection } from "../../../../hooks/useScrollToSection";
 import { scrollToTop } from "../../../../utils/motion";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { TfiComment } from "react-icons/tfi";
-import { PiShareFatThin } from "react-icons/pi";
 import { FaRegClock, FaTags, FaChevronRight } from "react-icons/fa";
+import SharePost from "../../../../components/SharePost";
+import { usePostMeta } from "../../../../hooks/usePostMeta";
 
 function PostDetail() {
   const company = useSelector((state) => state.company.company);
@@ -18,6 +19,7 @@ function PostDetail() {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const scrollToSection = useScrollToSection();
+  usePostMeta(post, company?.name);
 
   useEffect(() => {
     scrollToTop();
@@ -117,21 +119,21 @@ function PostDetail() {
           </h1>
 
           {/* Meta bar */}
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 w-full">
+            {post?.price && (
+              <div className="flex items-center gap-2 bg-[#ff5a00] text-white text-[12px] font-black uppercase tracking-widest px-4 py-1.5 shrink-0">
+                <FaTags className="text-[11px]" />
+                <span>{post.price}</span>
+              </div>
+            )}
             {formattedDate && (
               <div className="flex items-center gap-2 text-zinc-400 text-[13px] font-semibold">
                 <FaRegClock className="text-[#ff5a00] text-[12px]" />
                 <span>{formattedDate}</span>
               </div>
             )}
-            {post?.price && (
-              <div className="flex items-center gap-2 bg-[#ff5a00] text-white text-[12px] font-black uppercase tracking-widest px-4 py-1.5">
-                <FaTags className="text-[11px]" />
-                <span>{post.price}</span>
-              </div>
-            )}
             {company?.name && (
-              <div className="flex items-center gap-2 text-zinc-500 text-[12px] font-semibold uppercase tracking-wider border-l border-[#ffffff10] pl-8">
+              <div className="flex items-center gap-2 text-zinc-500 text-[12px] font-semibold uppercase tracking-wider border-l border-[#ffffff10] pl-8 ml-auto">
                 {company.name}
               </div>
             )}
@@ -164,10 +166,7 @@ function PostDetail() {
                   <span>{post?.commentCount ?? 0}</span>
                 </button>
                 <div className="w-px h-5 bg-zinc-200" aria-hidden="true" />
-                <button type="button" aria-label="Chia sẻ bài viết" className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold">
-                  <PiShareFatThin className="text-[18px]" aria-hidden="true" />
-                  <span>Chia sẻ</span>
-                </button>
+                <SharePost post={post} companyName={company?.name} />
               </div>
 
               {/* Mô tả */}
@@ -230,9 +229,9 @@ function PostDetail() {
                     </li>
                   )}
                   {post?.price && (
-                    <li className="flex items-start justify-between gap-4 text-[13px] border-b border-zinc-50 pb-4">
-                      <span className="text-zinc-400 font-semibold uppercase tracking-wider shrink-0">Giá trị</span>
-                      <span className="text-[#ff5a00] font-black text-right">{post.price}</span>
+                    <li className="flex flex-col items-start gap-1.5 text-[13px] border-b border-zinc-50 pb-4">
+                      <span className="text-zinc-400 font-semibold uppercase tracking-wider">Giá trị</span>
+                      <span className="text-[#ff5a00] font-black">{post.price}</span>
                     </li>
                   )}
                   <li className="flex items-start justify-between gap-4 text-[13px]">
@@ -243,6 +242,20 @@ function PostDetail() {
                     </span>
                   </li>
                 </ul>
+              </div>
+
+              {/* Chia sẻ công trình */}
+              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#111111] p-7 text-white border border-white/5">
+                <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[#ff5a00] mb-3">
+                  Lan tỏa công trình
+                </p>
+                <p className="text-white font-black text-[17px] uppercase leading-snug mb-2">
+                  Chia sẻ cho khách hàng
+                </p>
+                <p className="text-zinc-400 text-[12px] leading-relaxed mb-5">
+                  Hiển thị đẹp trên Facebook &amp; Zalo — giúp khách hàng tin tưởng và bấm xem ngay.
+                </p>
+                <SharePost post={post} companyName={company?.name} variant="sidebar" />
               </div>
 
               {/* CTA báo giá */}
