@@ -13,19 +13,8 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
   const [copied, setCopied] = useState(false);
   const shareData = post ? getPostShareData(post, companyName) : null;
 
-  const openShareWindow = (url) => {
-    window.open(url, "_blank", "noopener,noreferrer,width=600,height=520");
-  };
-
-  const handleFacebook = () => {
-    if (!shareData) return;
-    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title));
-  };
-
-  const handleZalo = () => {
-    if (!shareData) return;
-    openShareWindow(getZaloShareUrl(shareData.url));
-  };
+  const facebookUrl = shareData ? getFacebookShareUrl(shareData.url, shareData.title) : "";
+  const zaloUrl = shareData ? getZaloShareUrl(shareData.url) : "";
 
   const handleCopy = async () => {
     if (!shareData) return;
@@ -41,24 +30,28 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
   if (variant === "sidebar") {
     return (
       <div className="flex flex-col gap-3">
-        <button
-          type="button"
-          onClick={handleFacebook}
+        <a
+          href={facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center justify-center gap-3 bg-[#1877f2] hover:bg-[#166fe0] text-white px-4 py-3 font-extrabold text-[12px] uppercase tracking-widest transition-colors duration-300 w-full"
+          aria-label="Chia sẻ lên Facebook"
         >
           <FaFacebookF className="text-[16px]" />
           <span className="hidden sm:inline">Chia sẻ Facebook</span>
           <span className="sm:hidden">Facebook</span>
-        </button>
-        <button
-          type="button"
-          onClick={handleZalo}
+        </a>
+        <a
+          href={zaloUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center justify-center gap-3 bg-[#0068ff] hover:bg-[#0058d9] text-white px-4 py-3 font-extrabold text-[12px] uppercase tracking-widest transition-colors duration-300 w-full"
+          aria-label="Chia sẻ lên Zalo"
         >
           <SiZalo className="text-[18px]" />
           <span className="hidden sm:inline">Chia sẻ Zalo</span>
           <span className="sm:hidden">Zalo</span>
-        </button>
+        </a>
         <button
           type="button"
           onClick={handleCopy}
@@ -74,25 +67,27 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
 
   return (
     <div className="flex items-center gap-2 flex-wrap">
-      <button
-        type="button"
-        onClick={handleFacebook}
+      <a
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Chia sẻ lên Facebook"
         className="flex items-center gap-2 text-zinc-400 hover:text-[#1877f2] transition-colors duration-200 text-[13px] font-semibold"
       >
         <FaFacebookF className="text-[16px]" />
         <span className="hidden sm:inline">Facebook</span>
-      </button>
+      </a>
       <div className="w-px h-4 bg-zinc-200" />
-      <button
-        type="button"
-        onClick={handleZalo}
+      <a
+        href={zaloUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Chia sẻ lên Zalo"
         className="flex items-center gap-2 text-zinc-400 hover:text-[#0068ff] transition-colors duration-200 text-[13px] font-semibold"
       >
         <SiZalo className="text-[18px]" />
         <span className="hidden sm:inline">Zalo</span>
-      </button>
+      </a>
       <div className="w-px h-4 bg-zinc-200" />
       <button
         type="button"
