@@ -29,7 +29,8 @@ function ogPagesPlugin(siteUrl) {
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const siteUrl = env.VITE_SITE_URL || process.env.VITE_SITE_URL
+  const siteUrl = env.VITE_SITE_URL || process.env.VITE_SITE_URL || process.env.URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
 
   return {
     plugins: [

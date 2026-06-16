@@ -39,7 +39,10 @@ export const publicRoute = {
         }
       ]
     },
-  
+    {
+      path: "*",
+      element: <NotFound />
+    }
   ]
 }
 

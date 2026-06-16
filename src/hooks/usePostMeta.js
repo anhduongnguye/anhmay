@@ -21,11 +21,15 @@ const META_KEYS = [
   "canonical",
 ];
 
-function upsertMeta(attr, key, content) {
+function upsertMeta(attr, key, content, previousMeta) {
   if (!content) return;
 
   const selector = `meta[${attr}="${key}"]`;
   let element = document.head.querySelector(selector);
+
+  if (!previousMeta.hasOwnProperty(key)) {
+    previousMeta[key] = element ? element.getAttribute("content") : null;
+  }
 
   if (!element) {
     element = document.createElement("meta");
@@ -36,11 +40,14 @@ function upsertMeta(attr, key, content) {
   element.setAttribute("content", content);
 }
 
-function upsertCanonical(url) {
+function upsertCanonical(url, previousCanonical) {
   if (!url) return;
 
   let element = document.head.querySelector('link[rel="canonical"]');
-  
+  if (!previousCanonical.hasOwnProperty("canonical")) {
+    previousCanonical.canonical = element ? element.getAttribute("href") : null;
+  }
+
   if (!element) {
     element = document.createElement("link");
     element.setAttribute("rel", "canonical");
@@ -56,43 +63,58 @@ export function usePostMeta(post, companyName = SITE_NAME) {
 
     const { url, title, description, image } = getPostShareData(post, companyName);
     const previousTitle = document.title;
+    const previousMeta = {};
+    const previousCanonical = {};
 
     document.title = title;
     
     // Basic meta
-    upsertMeta("name", "description", description);
+    upsertMeta("name", "description", description, previousMeta);
     
     // Canonical URL for SEO and social sharing
-    upsertCanonical(url);
+    upsertCanonical(url, previousCanonical);
     
     // Open Graph tags for Facebook
-    upsertMeta("property", "og:type", "article");
-    upsertMeta("property", "og:site_name", companyName);
-    upsertMeta("property", "og:title", title);
-    upsertMeta("property", "og:description", description);
-    upsertMeta("property", "og:image", image);
-    upsertMeta("property", "og:image:width", "1200");
-    upsertMeta("property", "og:image:height", "630");
-    upsertMeta("property", "og:image:alt", post.name);
-    upsertMeta("property", "og:url", url);
-    upsertMeta("property", "og:locale", "vi_VN");
+    upsertMeta("property", "og:type", "article", previousMeta);
+    upsertMeta("property", "og:site_name", companyName, previousMeta);
+    upsertMeta("property", "og:title", title, previousMeta);
+    upsertMeta("property", "og:description", description, previousMeta);
+    upsertMeta("property", "og:image", image, previousMeta);
+    upsertMeta("property", "og:image:width", "1200", previousMeta);
+    upsertMeta("property", "og:image:height", "630", previousMeta);
+    upsertMeta("property", "og:image:alt", post.name, previousMeta);
+    upsertMeta("property", "og:url", url, previousMeta);
+    upsertMeta("property", "og:locale", "vi_VN", previousMeta);
     
     // Twitter card tags
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", title);
-    upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", image);
+    upsertMeta("name", "twitter:card", "summary_large_image", previousMeta);
+    upsertMeta("name", "twitter:title", title, previousMeta);
+    upsertMeta("name", "twitter:description", description, previousMeta);
+    upsertMeta("name", "twitter:image", image, previousMeta);
 
     return () => {
       document.title = previousTitle;
-      META_KEYS.forEach((key) => {
-        if (key === "canonical") {
-          document.head.querySelector('link[rel="canonical"]')?.remove();
+
+      Object.entries(previousMeta).forEach(([key, previousValue]) => {
+        const attr = key.startsWith("og:") ? "property" : "name";
+        const element = document.head.querySelector(`meta[${attr}="${key}"]`);
+        if (!element) return;
+
+        if (previousValue === null) {
+          element.remove();
         } else {
-          const attr = key.startsWith("og:") ? "property" : "name";
-          document.head.querySelector(`meta[${attr}="${key}"]`)?.remove();
+          element.setAttribute("content", previousValue);
         }
       });
+
+      const canonicalElement = document.head.querySelector('link[rel="canonical"]');
+      if (canonicalElement) {
+        if (previousCanonical.canonical === null) {
+          canonicalElement.remove();
+        } else {
+          canonicalElement.setAttribute("href", previousCanonical.canonical);
+        }
+      }
     };
   }, [post, companyName]);
 }
