@@ -7,6 +7,8 @@ import {
   getFacebookShareUrl,
   getPostShareData,
   getZaloShareUrl,
+  canNativeShare,
+  nativeShare,
 } from "../../utils/share";
 
 export default function SharePost({ post, companyName, variant = "inline" }) {
@@ -28,12 +30,41 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
 
   const handleFacebook = () => {
     if (!shareData) return;
-    openShareWindow(getFacebookShareUrl(shareData.url));
+    const { url, title, description } = shareData;
+
+    // Ưu tiên native share trên mobile nếu có
+    if (canNativeShare()) {
+      try {
+        nativeShare({ title, text: description, url });
+        return;
+      } catch (e) {
+        // fallback tiếp theo
+      }
+    }
+
+    // Trên mobile dùng phiên bản di động của Facebook để hạn chế deep-link lỗi
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const fbUrl = isMobile
+      ? `https://m.facebook.com/sharer.php?u=${encodeURIComponent(url)}`
+      : getFacebookShareUrl(url);
+
+    openShareWindow(fbUrl);
   };
 
   const handleZalo = () => {
     if (!shareData) return;
-    openShareWindow(getZaloShareUrl(shareData.url));
+    const { url, title, description } = shareData;
+
+    if (canNativeShare()) {
+      try {
+        nativeShare({ title, text: description, url });
+        return;
+      } catch (e) {
+        // fallback tiếp theo
+      }
+    }
+
+    openShareWindow(getZaloShareUrl(url));
   };
 
   const handleCopy = async () => {

@@ -7,7 +7,7 @@ function NotFound() {
         <p className="text-sm uppercase tracking-[0.35em] text-[#ff6600] mb-5">Không tìm thấy trang</p>
         <h1 className="text-5xl sm:text-6xl font-black text-zinc-950 mb-6 leading-tight">404</h1>
         <p className="text-lg sm:text-xl text-zinc-600 mb-10">
-          Trang bạn đang tìm không tồn tại hoặc đã bị chuyển vị trí.
+          Trang bạn đang tìm không tồn tại.
         </p>
         <Link
           to="/"
