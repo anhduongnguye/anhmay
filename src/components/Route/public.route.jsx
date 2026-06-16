@@ -2,6 +2,7 @@
 import PublicLayout from "../../layouts/public/PublicLayout";
 
 import Home from "../../pages/public/Home"
+import NotFound from "../../pages/public/NotFound";
 
 import Post from "../../pages/public/posts/Post";
 import PostDetail from "../../pages/public/posts/PostDetail";
