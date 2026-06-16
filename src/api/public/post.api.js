@@ -48,3 +48,29 @@ export const getPostById = async (postId) => {
     }
   };
 };
+
+export const getPostRelated = async (excludePostId, pagination) => {
+  const { currentPage = 1, pageSize = 5 } = pagination || {};
+
+  const relatedPosts = postsData
+    .filter(post => post.isActive === true && post.id !== excludePostId)
+    // Sắp xếp từ mới nhất đến cũ nhất
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedData = relatedPosts.slice(startIndex, endIndex);
+
+  const totalItems = relatedPosts.length;
+  const totalPages = Math.ceil(totalItems / pageSize);
+
+  return {
+    status: 200,
+    data: {
+      message: "Lấy danh sách bài viết liên quan thành công",
+      data: paginatedData,
+      totalItems: totalItems,
+      totalPages: totalPages
+    }
+  };
+};

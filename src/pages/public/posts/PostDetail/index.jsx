@@ -279,7 +279,7 @@ function PostDetail() {
       </div>
 
       {/* ══ CÔNG TRÌNH LIÊN QUAN ══ */}
-      <PostRelated />
+      <PostRelated postId={postId} />
     </div>
   );
 }

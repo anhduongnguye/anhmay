@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getPosts } from "../../../../api/public/post.api";
+import { getPostRelated } from "../../../../api/public/post.api";
 
-function PostRelated() {
+function PostRelated({ postId }) {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
@@ -14,9 +14,11 @@ function PostRelated() {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
+    if (!postId) return;
+    
     const fetchApi = async () => {
       try {
-        const response = await getPosts(pagination);
+        const response = await getPostRelated(postId, pagination);
         if (response.status === 200) {
           setPosts(prev => {
             const existingIds = new Set(prev.map(p => p.id));
@@ -33,7 +35,7 @@ function PostRelated() {
       }
     };
     fetchApi();
-  }, [pagination.currentPage]);
+  }, [pagination.currentPage, postId]);
 
   if (isLoading) return (
     <div className="flex items-center justify-center py-16 text-zinc-500 text-[12px] font-extrabold uppercase tracking-[0.2em]">
