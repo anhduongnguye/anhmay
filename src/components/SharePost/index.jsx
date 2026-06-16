@@ -7,8 +7,6 @@ import {
   getFacebookShareUrl,
   getPostShareData,
   getZaloShareUrl,
-  canNativeShare,
-  nativeShare,
 } from "../../utils/share";
 
 export default function SharePost({ post, companyName, variant = "inline" }) {
@@ -18,7 +16,7 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
   const openShareWindow = (url) => {
     // Kiểm tra xem người dùng có đang dùng điện thoại/máy tính bảng không
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  
+
     if (isMobile) {
       // Trên điện thoại: Mở tab mới hoàn toàn (Trình duyệt mobile sẽ KHÔNG chặn)
       window.open(url, "_blank");
@@ -30,41 +28,12 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
 
   const handleFacebook = () => {
     if (!shareData) return;
-    const { url, title, description } = shareData;
-
-    // Ưu tiên native share trên mobile nếu có
-    if (canNativeShare()) {
-      try {
-        nativeShare({ title, text: description, url });
-        return;
-      } catch (e) {
-        // fallback tiếp theo
-      }
-    }
-
-    // Trên mobile dùng phiên bản di động của Facebook để hạn chế deep-link lỗi
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const fbUrl = isMobile
-      ? `https://m.facebook.com/sharer.php?u=${encodeURIComponent(url)}`
-      : getFacebookShareUrl(url);
-
-    openShareWindow(fbUrl);
+    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title));
   };
 
   const handleZalo = () => {
     if (!shareData) return;
-    const { url, title, description } = shareData;
-
-    if (canNativeShare()) {
-      try {
-        nativeShare({ title, text: description, url });
-        return;
-      } catch (e) {
-        // fallback tiếp theo
-      }
-    }
-
-    openShareWindow(getZaloShareUrl(url));
+    openShareWindow(getZaloShareUrl(shareData.url));
   };
 
   const handleCopy = async () => {
@@ -141,7 +110,7 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
         className="flex items-center gap-2 text-zinc-400 hover:text-[#ff5a00] transition-colors duration-200 text-[13px] font-semibold"
       >
         {copied ? <FaCheck className="text-[14px]" /> : <FaLink className="text-[14px]" />}
-        <span className="hidden sm:inline">{copied ? "Đã copy" : "Copy link"}</span>
+        <span className="hidden sm:inline">{copied ? "Đã copy" : "Copy"}</span>
       </button>
     </div>
   );

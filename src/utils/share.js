@@ -27,8 +27,9 @@ export function getPostShareData(post, companyName = "") {
   return { url, title, description, image };
 }
 
-export function getFacebookShareUrl(url) {
-  return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+export function getFacebookShareUrl(url, quote) {
+  const q = quote ? `&quote=${encodeURIComponent(quote)}` : "";
+  return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}${q}`;
 }
 
 export function getZaloShareUrl(url) {
