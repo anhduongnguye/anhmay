@@ -247,13 +247,10 @@ function PostDetail() {
               {/* Chia sẻ công trình */}
               <div className="bg-gradient-to-br from-[#1a1a1a] to-[#111111] p-7 text-white border border-white/5">
                 <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[#ff5a00] mb-3">
-                  Lan tỏa công trình
+                  Chia sẻ ngay
                 </p>
                 <p className="text-white font-black text-[17px] uppercase leading-snug mb-2">
-                  Chia sẻ cho khách hàng
-                </p>
-                <p className="text-zinc-400 text-[12px] leading-relaxed mb-5">
-                  Hiển thị đẹp trên Facebook &amp; Zalo — giúp khách hàng tin tưởng và bấm xem ngay.
+                  Lan tỏa công trình
                 </p>
                 <SharePost post={post} companyName={company?.name} variant="sidebar" />
               </div>

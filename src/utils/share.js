@@ -8,8 +8,20 @@ export function truncateText(text = "", maxLength = 160) {
 
 export function getPostShareData(post, companyName = "") {
   const url = getPostUrl(post.id);
-  const title = companyName ? `${post.name} | ${companyName}` : post.name;
-  const description = truncateText(post.description, 200);
+  
+  // Tạo title thu hút sale với emoji và thông tin quan trọng
+  const priceText = post.price ? ` ${post.price}` : "";
+  const title = `${post.name}${priceText} | ${companyName || "Cơ Khí Nguyễn May"}`;
+  
+  // Tạo description thu hút với CTA mạnh
+  let description = "";
+  if (post.description) {
+    description = truncateText(post.description, 150);
+  } else {
+    description = `Công trình cơ khí chất lượng cao, thi công chuyên nghiệp. Liên hệ ngay để nhận báo giá miễn phí!`;
+  }
+  
+  // Ưu tiên thumbnail chất lượng cao cho Facebook
   const image = post.thumbnail || post.images?.[0] || "";
 
   return { url, title, description, image };
