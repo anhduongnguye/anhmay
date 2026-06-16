@@ -28,7 +28,8 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
 
   const handleFacebook = () => {
     if (!shareData) return;
-    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title));
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title, isMobile));
   };
 
   const handleZalo = () => {
