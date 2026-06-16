@@ -27,8 +27,8 @@ export function getPostShareData(post, companyName = "") {
   return { url, title, description, image };
 }
 
-export function getFacebookShareUrl(url, quote, useMobile = false) {
-  const domain = useMobile ? "https://m.facebook.com/sharer.php" : "https://www.facebook.com/sharer/sharer.php";
+export function getFacebookShareUrl(url, quote) {
+  const domain = "https://www.facebook.com/sharer/sharer.php";
   const q = quote ? `&quote=${encodeURIComponent(quote)}` : "";
   return `${domain}?u=${encodeURIComponent(url)}${q}`;
 }

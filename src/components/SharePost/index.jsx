@@ -14,22 +14,12 @@ export default function SharePost({ post, companyName, variant = "inline" }) {
   const shareData = post ? getPostShareData(post, companyName) : null;
 
   const openShareWindow = (url) => {
-    // Kiểm tra xem người dùng có đang dùng điện thoại/máy tính bảng không
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      // Trên điện thoại: Mở tab mới hoàn toàn (Trình duyệt mobile sẽ KHÔNG chặn)
-      window.open(url, "_blank");
-    } else {
-      // Trên máy tính: Giữ nguyên cửa sổ Pop-up nhỏ gọn như cũ
-      window.open(url, "_blank", "noopener,noreferrer,width=600,height=520");
-    }
+    window.open(url, "_blank", "noopener,noreferrer,width=600,height=520");
   };
 
   const handleFacebook = () => {
     if (!shareData) return;
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title, isMobile));
+    openShareWindow(getFacebookShareUrl(shareData.url, shareData.title));
   };
 
   const handleZalo = () => {
