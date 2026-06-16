@@ -185,5 +185,28 @@
     "commentCount": 24,
     "priority": 8,
     "isActive": true
-  }
+  },
+{
+  "id": "ban-giao-cua-cong-hang-rao-sat-hien-dai-nha-anh-thang-ngu-binh-hue",
+  "name": "Bàn giao hệ thống cửa cổng và hàng rào sắt cho nhà anh Thắng tại Ngự Bình - TP Huế",
+  "description": "Thêm một công trình hoàn thiện trọn gói được bàn giao thành công cho gia đình anh Thắng tại đường Ngự Bình, thành phố Huế.\nDự án bao gồm hệ thống cửa cổng sắt 4 cánh xếp gọn tối ưu không gian kết hợp cùng dàn hàng rào sắt hộp kiên cố bao quanh khuôn viên nhà.\n\nSản phẩm sở hữu phong cách thiết kế tối giản, hiện đại với tone màu ghi xám mờ sang trọng, dễ dàng hòa hợp với kiến trúc tổng thể của ngôi nhà.\nToàn bộ khung sắt đều được xử lý bề mặt kỹ lưỡng và phủ lớp sơn tĩnh điện cao cấp, giúp chống chịu tốt trước thời tiết khắc nghiệt, hạn chế tối đa tình trạng hoen gỉ theo thời gian.\n\nĐội ngũ thợ lành nghề đã thi công tỉ mỉ từng mối hàn, đảm bảo kết cấu vững chắc, vận hành êm ái và mang lại sự an tâm tuyệt đối về an ninh cho gia chủ.\nĐồng thời, tiến độ lắp đặt được kiểm soát nghiêm ngặt, bàn giao đúng hẹn để công trình kịp đi vào sử dụng hoàn hảo.",
+  "price": "Liên hệ báo giá",
+  "thumbnail": "https://i.ibb.co/gMFmJcx4/z7935431489166-0e3edd6a9c3419108923ef7237241a26.jpg",
+  "images": [
+    "https://i.ibb.co/gMFmJcx4/z7935431489166-0e3edd6a9c3419108923ef7237241a26.jpg",
+    "https://i.ibb.co/S2rgg2G/z7935431505832-a501e7560e4e53b3bafbe5f24447864d.jpg",
+    "https://i.ibb.co/pvxCYZ24/z7935431520967-0acad12e7f5702b81f80659da4176272.jpg",
+    "https://i.ibb.co/N2x8Mqzh/z7935431526533-53b13dfc9552b5a8bd2f79ecda528057.jpg"
+  ],
+  "createdAt": "2026-06-14T21:03:50.000Z",
+  "categories": [
+    "1",
+    "2",
+    "3"
+  ],
+  "likeCount": 18,
+  "commentCount": 4,
+  "priority": 1,
+  "isActive": true
+}
 ]

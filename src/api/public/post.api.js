@@ -1,12 +1,13 @@
 // src/api/public/post.js
 import postsData from "../../data/posts.json";
 
-export const getPosts= async (pagination) => {
+export const getPosts = async (pagination) => {
   const { currentPage = 1, pageSize = 5 } = pagination || {};
 
   const activePosts = postsData
     .filter(post => post.isActive === true)
-    .sort((a, b) => a.priority - b.priority);
+    // Sắp xếp từ mới nhất đến cũ nhất
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
@@ -19,9 +20,9 @@ export const getPosts= async (pagination) => {
     status: 200,
     data: {
       message: "Lấy dòng thời gian thành công",
-      data: paginatedData,   // Mảng bài viết Threads của trang hiện tại
-      totalItems: totalItems, // Tổng số bài viết đang hoạt động trên hệ thống
-      totalPages: totalPages  // Tổng số trang có thể chia được
+      data: paginatedData,
+      totalItems: totalItems,
+      totalPages: totalPages
     }
   };
 };
