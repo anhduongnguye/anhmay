@@ -208,5 +208,28 @@
   "commentCount": 4,
   "priority": 1,
   "isActive": true
+},
+{
+  "id": "ban-giao-chong-tham-xu-ly-mai-ton-mua-dot-nha-chi-nga-chi-lang",
+  "name": "Bàn giao hạng mục chống thấm và xử lý mái tôn mưa dột nhà chị Nga tại Chi Lăng - TP Huế",
+  "description": "Hoàn thành và bàn giao hạng mục khắc phục, xử lý chống thấm dột hệ thống mái tôn cho gia đình chị Nga tại đường Chi Lăng, TP Huế trước mùa mưa bão.\nHiện trạng công trình trước khi xử lý gặp phải tình trạng thấm dột ở các vị trí mũ đinh, khe tiếp giáp và lướt sóng mái, gây ảnh hưởng nghiêm trọng đến sinh hoạt bên trong nhà.\n\nĐội ngũ kỹ thuật đã tiến hành khảo sát kỹ lưỡng, vệ sinh sạch sẽ bề mặt mái tôn, thay thế hệ thống đinh vít rỉ sét và ứng dụng vật liệu chống thấm chuyên dụng cao cấp.\nCác điểm tiếp giáp tường và khe hở được xử lý bằng keo kết dính đàn hồi cao kết hợp màng chống thấm chịu nhiệt, giúp ngăn nước triệt để, có khả năng co giãn tốt theo thời tiết.\n\nCông trình sau khi hoàn thiện đảm bảo tính thẩm mỹ, độ bền bỉ cao và loại bỏ hoàn toàn nỗi lo ẩm mốc, dột nát mỗi khi mưa lớn.\nCảm ơn chị Nga đã tin tưởng lựa chọn dịch vụ xử lý chống thấm chuyên nghiệp của chúng tôi để bảo vệ mái ấm của mình.",
+  "price": "Liên hệ báo giá",
+  "thumbnail": "https://i.ibb.co/HstnDr1/z7952242290448-b0a871653a94997725e701d14afb7986.jpg",
+  "images": [
+    "https://i.ibb.co/HstnDr1/z7952242290448-b0a871653a94997725e701d14afb7986.jpg",
+    "https://i.ibb.co/kVPg9wXT/z7952242313792-ac03bc2efc858534a2d0a210f5ddb49a.jpg",
+    "https://i.ibb.co/1YZMHhRV/z7952242315191-8e11c13de8dc5acb4bed6d5449386ae9.jpg",
+    "https://i.ibb.co/vCwxLtqh/z7952242319993-86159431621314cf3f14c1b1e099da63.jpg"
+  ],
+  "createdAt": "2026-06-19T02:02:50.000Z",
+  "categories": [
+    "1",
+    "2",
+    "3"
+  ],
+  "likeCount": 24,
+  "commentCount": 5,
+  "priority": 1,
+  "isActive": true
 }
 ]
